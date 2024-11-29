@@ -1,15 +1,3 @@
-import data from './quotes.json' with {type:'json'}
-
-var el = document.querySelector("newQuote");
-
-function botao() {
-
-let id =0
-id = Math.floor(Math.random() * data.lenght)
-id2= data[id]
-content = document.querySelector(msg)
-msg.textContent = id2
-}
 /*
 Requisitos
 
@@ -30,20 +18,45 @@ b) Quando o usuário clicar no botão 'share it':
 
 // 1. O programa deverá selecionar de maneira aleatória uma nova frase contida em quotes.json
 // importar o arquivo json - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import/with
+import data from './quotes.json' with {type: 'json'}
+
+console.log(data.length)
+
 
 
 // selecionar frase aleatoriamente com o método Math.floor((Math.random() * <tamanho do array>))
 // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+let id = 0
+id = Math.floor((Math.random() * data.length))
+console.log(data[id])
 
 
 // selecionar nó do html relacionado a mensagem  
 // https://developer.mozilla.org/pt-BR/docs/Web/API/Document/querySelector
 
+ let content = document.querySelector('#content') 
+// content.textContent = "randum"
+// console.log(content.textContent)
 
 // selecionar nó do html relacionado ao botão de novas frases
 // https://developer.mozilla.org/pt-BR/docs/Web/API/Document/getElementById
 // selecionar nó do html relacionado ao botão de compartilhar twitter
 
+let newQuotesButton = document.getElementById("newQuote")
+console.log(newQuotesButton)
+
+
+
+let shareIt = document.getElementById("shareTwitter")
+console.log(shareIt)
+
+
+ 
+newQuotesButton.addEventListener ("click", () => {
+   id = Math.floor((Math.random() * data.length))
+   console.log(data[id])
+   content.textContent = data[id]["quote"]
+})
 
 
 /* adicionar evento de click para quando usuário clicar no botão newQuote
